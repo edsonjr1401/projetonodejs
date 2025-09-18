@@ -21,6 +21,10 @@ const Sequelize = require('sequelize')
     res.render("formulario")
 })
 
+//     app.post('/add', function(req, res){
+//     res.render('FORMULARIO RECEBIDO!') 
+// })
+
 app.listen(8081, function(){
     console.log("Serveidor Rodando!");
 });
