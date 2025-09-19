@@ -2,7 +2,7 @@ const express = require("express"); // <- IMPORTAR O EXPRESS
 const app = express();
 const { engine } = require('express-handlebars');
 const bodyParser = require('body-parser')
-const Sequelize = require('sequelize')
+
 
 
  //Config
@@ -14,11 +14,8 @@ const Sequelize = require('sequelize')
     app.use(bodyParser.urlencoded({extended: false}))
     app.use(bodyParser.json())
     
-    // Conexão com o banco de dados Mysql
-   const sequelize = new Sequelize('test', 'root', '6863', {
-    host: "localhost",
-    dialect: 'mysql'
-})
+ 
+
 
 //ROTAS
 
