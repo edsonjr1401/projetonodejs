@@ -9,4 +9,4 @@ const Post = db.sequelize.define('postagens', {
 }
 })
 
-Post.sync({force: true})
+modeule.exports = Post
