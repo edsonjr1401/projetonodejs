@@ -15,9 +15,6 @@ const Post = require('./models/Post')
     app.use(bodyParser.urlencoded({extended: false}))
     app.use(bodyParser.json())
     
- 
-
-
 //ROTAS
 
     app.get('/cad', function(req, res){

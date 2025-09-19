@@ -2,11 +2,11 @@ const db = require('./db')
 
 const Post = db.sequelize.define('postagens', {
     titulo: {
-        type: db.Sequelize.STRINGS
+        type: db.Sequelize.STRING
     }, 
     conteudo: {
         type: db.Sequelize.TEXT
 }
 })
 
-modeule.exports = Post
+module.exports = Post
