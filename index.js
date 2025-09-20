@@ -18,6 +18,10 @@ Post.sync({force: false})
     
 //ROTAS
 
+  app.get('/', function(rew, res){
+    res.render('home')
+  })
+
     app.get('/cad', function(req, res){
     res.render("formulario")
 })
