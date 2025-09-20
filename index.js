@@ -19,7 +19,9 @@ Post.sync({force: false})
 //ROTAS
 
   app.get('/', function(rew, res){
-    res.render('home')
+    Post.all().then(function(posts){
+      res.render('home', {nome: 'Edson',sobrenome: "Junior"})
+    })
   })
 
     app.get('/cad', function(req, res){
