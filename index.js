@@ -19,7 +19,7 @@ Post.sync({force: false})
 //ROTAS
 
   app.get('/', function(rew, res){
-    Post.all().then(function(posts){
+    Post.findAll().then(function(posts){
       res.render('home', {nome: 'Edson',sobrenome: "Junior"})
     })
   })
