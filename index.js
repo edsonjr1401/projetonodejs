@@ -20,7 +20,7 @@ Post.sync({force: false})
 
   app.get('/', function(rew, res){
     Post.findAll().then(function(posts){
-      res.render('home', {nome: 'Edson',sobrenome: "Junior"})
+      res.render('home', {posts: posts})
     })
   })
 
