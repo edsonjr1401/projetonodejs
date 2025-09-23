@@ -6,21 +6,31 @@ const Post = require('./models/Post')
 
 Post.sync({force: false})
 
-
- //Config
-   //Templete Engine
-    app.engine('handlebars', engine({ defaultLayout: 'main' }));
+//Config
+   //Template Engine
+    app.engine('handlebars', engine({ 
+        defaultLayout: 'main',
+        runtimeOptions: {
+            allowProtoPropertiesByDefault: true,
+            allowProtoMethodsByDefault: true,
+        }
+    }));
     app.set('view engine', 'handlebars')
 
-    // Bory Parser
+    // Body Parser
     app.use(bodyParser.urlencoded({extended: false}))
     app.use(bodyParser.json())
     
 //ROTAS
 
-  app.get('/', function(rew, res){
+  app.get('/', function(req, res){
     Post.findAll().then(function(posts){
-      res.render('home', {posts: posts})
+      // Converter para JSON para garantir compatibilidade com Handlebars
+      const postsData = posts.map(post => post.toJSON());
+      res.render('home', {posts: postsData})
+    }).catch(function(erro){
+      console.log("Erro ao buscar posts:", erro);
+      res.render('home', {posts: []})
     })
   })
 
@@ -35,10 +45,10 @@ Post.sync({force: false})
       }).then(function(){
          res.redirect('/')
       }).catch(function(erro){
-         res.send("Houve um erro: " +erro)
+         res.send("Houve um erro: " + erro)
       })
 })
 
 app.listen(8081, function(){
-    console.log("Serveidor Rodando!");
+    console.log("Servidor Rodando na porta 8081!");
 });
